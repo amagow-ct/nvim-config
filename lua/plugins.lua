@@ -34,8 +34,17 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-	-- Package manager
+  -- Package manager
   use 'wbthomason/packer.nvim'
+
+  -- LSP management (must come first as per mason-lspconfig.nvim's instructions)
+  use 'williamboman/mason.nvim'
+  use {
+    'williamboman/mason-lspconfig.nvim',
+    config = function() require('plugins.mason-lspconfig') end,
+  }
+  use 'neovim/nvim-lspconfig'
+
 
   -- Theme inspired by Atom
   use 'joshdick/onedark.vim'
