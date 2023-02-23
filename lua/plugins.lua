@@ -75,19 +75,25 @@ require('packer').startup(function(use)
     config = function() require('plugins.nvimtree') end
   } 
 
- -- Treesitter
+   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function() require('plugins.treesitter') end,
     run = ':TSUpdate'
   }
   
- -- Gitsigns
+   -- Gitsigns
   use {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
   }
 
+
+  -- Comments
+  use { 
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup({}) end,
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
