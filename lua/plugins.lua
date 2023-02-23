@@ -52,12 +52,12 @@ require('packer').startup(function(use)
 
 
   -- Bufferline
-  use({
+  use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     tag = "v3.*",
     config = function() require('plugins.bufferline') end,
-  })
+  }
 
   -- Pretty status line
   use {
@@ -74,6 +74,13 @@ require('packer').startup(function(use)
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = function() require('plugins.nvimtree') end
   } 
+
+ -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require('plugins.treesitter') end,
+    run = ':TSUpdate'
+  }
 
   if packer_bootstrap then
     require('packer').sync()
