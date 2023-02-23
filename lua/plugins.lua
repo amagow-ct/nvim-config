@@ -81,6 +81,12 @@ require('packer').startup(function(use)
     config = function() require('plugins.treesitter') end,
     run = ':TSUpdate'
   }
+  
+ -- Gitsigns
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('plugins.gitsigns') end,
+  }
 
   if packer_bootstrap then
     require('packer').sync()
