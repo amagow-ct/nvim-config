@@ -36,6 +36,10 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
+ 
+  -- THEMES
+  -- Theme inspired by Atom
+  use 'joshdick/onedark.vim'
 
   -- LSP management (must come first as per mason-lspconfig.nvim's instructions)
   use 'williamboman/mason.nvim'
@@ -46,8 +50,14 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
 
 
-  -- Theme inspired by Atom
-  use 'joshdick/onedark.vim'
+
+  -- Bufferline
+  use({
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    tag = "v3.*",
+    config = function() require('plugins.bufferline') end,
+  })
 
   -- Pretty status line
   use {
