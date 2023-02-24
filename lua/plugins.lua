@@ -101,6 +101,9 @@ require('packer').startup(function(use)
     config = function() require('Comment').setup({}) end,
   }
 
+  -- Formatting
+  use 'tpope/vim--surround'
+
   if packer_bootstrap then
     require('packer').sync()
   end
