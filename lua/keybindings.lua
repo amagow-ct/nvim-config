@@ -26,6 +26,9 @@ nnoremap('<F2>', '<Cmd>NvimTreeToggle<CR>')
 nnoremap('gt', '<Cmd>bnext<CR>')
 nnoremap('gT', '<Cmd>bprevious<CR>')
 
+-- Buffer control
+nnoremap('<leader>bd', '<Cmd>bdelete<CR>')
+
   -- Gitsigns
 km.set({'n', 'v'}, '<leader>hs', '<Cmd>Gitsigns stage_hunk<CR>')
 km.set({'n', 'v'}, '<leader>hr', '<Cmd>Gitsigns reset_hunk<CR>')
@@ -50,18 +53,11 @@ km.set('n', '[c', function()
 end, {expr=true})
 
 -- vim fugitive
--- nnoremap <space>ga :Git add %:p<CR><CR>
--- nnoremap <space>gs :Gstatus<CR>
--- nnoremap <space>gc :Gcommit -v -q<CR>
--- nnoremap <space>gt :Gcommit -v -q %:p<CR>
--- nnoremap <space>gd :Gdiff<CR>
--- nnoremap <space>ge :Gedit<CR>
--- nnoremap <space>gr :Gread<CR>
--- nnoremap <space>gw :Gwrite<CR><CR>
--- nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
--- nnoremap <space>gp :Ggrep<Space>
--- nnoremap <space>gm :Gmove<Space>
--- nnoremap <space>gb :Git branch<Space>
--- nnoremap <space>go :Git checkout<Space>
--- nnoremap <space>gps :Dispatch! git push<CR>
--- nnoremap <space>gpl :Dispatch! git pull<CR>
+nnoremap('<leader>gg', '<Cmd>Git<CR>')
+nnoremap('<leader>ga', '<Cmd>Git add %:p<CR>')
+nnoremap('<leader>gA', '<Cmd>Git add %:p<CR>')
+nnoremap('<leader>gs', '<Cmd>Git status<CR>')
+nnoremap('<leader>gc', '<Cmd>Git commit -v -q<CR>')
+nnoremap('<leader>gC', '<Cmd>Git commit -v -q %:p<CR>')
+nnoremap('<leader>gd', '<Cmd>Git diff<CR>')
+nnoremap('<leader>gl', '<Cmd>Git log<CR>')
