@@ -82,7 +82,8 @@ require('packer').startup(function(use)
     run = ':TSUpdate'
   }
   
-   -- Gitsigns
+   -- Git
+  use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
