@@ -94,6 +94,11 @@ require('packer').startup(function(use)
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup({}) end,
   }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require('plugins.indent-blankline') end,
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
