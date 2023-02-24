@@ -22,6 +22,10 @@ nnoremap('<leader>a', ':keepjumps normal! ggVG<cr>')
 -- File explorer
 nnoremap('<F2>', '<Cmd>NvimTreeToggle<CR>') 
 
+-- Buffer navigation
+nnoremap('<leader>bn', '<Cmd>bnext<CR>')
+nnoremap('<leader>bN', '<Cmd>bprevious<CR>')
+
   -- Gitsigns
 km.set({'n', 'v'}, '<leader>hs', '<Cmd>Gitsigns stage_hunk<CR>')
 km.set({'n', 'v'}, '<leader>hr', '<Cmd>Gitsigns reset_hunk<CR>')
