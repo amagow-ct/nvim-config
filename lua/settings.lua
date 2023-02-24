@@ -25,8 +25,12 @@ o.mouse = 'a'
 g.mapleader = ' '
 
 -- Netrw
- g.loaded_netrw = 1
- g.loaded_netrwPlugin = 1
- 
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 -- Auto complete
 o.completeopt = {'menu', 'menuone', 'noselect'}
+
+-- treesitter folding
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
