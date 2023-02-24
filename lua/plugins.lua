@@ -88,15 +88,16 @@ require('packer').startup(function(use)
     config = function() require('plugins.gitsigns') end,
   }
 
+  -- Indent Line
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require('plugins.indent-blankline') end,
+  }
 
   -- Comments
   use { 
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup({}) end,
-  }
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function() require('plugins.indent-blankline') end,
   }
 
   if packer_bootstrap then
