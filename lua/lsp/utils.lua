@@ -41,17 +41,17 @@ function M.common_on_attach(client, bufnr)
   bufnnoremap("<C-p>", "<Cmd>lua vim.diagnostic.goto_prev()<CR>")
 
    -- Selects a code action available at the current cursor position
-  bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-  bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+  bufnnoremap('<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+  vim.api.nvim_buf_set_keymap(bufnr, 'x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', {})
 
   -- Show diagnostics in a floating window
-  bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+  bufnnoremap('gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
   -- Move to the previous diagnostic
-  bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+  bufnnoremap('[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 
   -- Move to the next diagnostic
-  bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+  bufnnoremap(']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
   -- Markdown preview TODO: make this conditional, but I also don't use it all that much
   -- bufnnnoremap("<leader>P", "<Cmd>Glow<CR>")

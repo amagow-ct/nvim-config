@@ -50,6 +50,7 @@ require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.lspconfig') end,
+    requires = { "ray-x/lsp_signature.nvim" },
   }
 
   -- Autocomplete
