@@ -97,11 +97,7 @@ require('packer').startup(function(use)
 use {
   'glepnir/dashboard-nvim',
   event = 'VimEnter',
-  config = function()
-    require('dashboard').setup {
-      -- config
-    }
-  end,
+  config = function() require('plugins.dashboard') end,
   requires = {'nvim-tree/nvim-web-devicons'}
 }
 
