@@ -47,7 +47,29 @@ require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     config = function() require('plugins.mason-lspconfig') end,
   }
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require('plugins.lspconfig') end,
+  }
+
+  -- Autocomplete
+  use({
+    "hrsh7th/nvim-cmp",
+    -- Sources for nvim-cmp
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-cmdline",
+      "saadparwaiz1/cmp_luasnip",
+    },
+    config = function() require('plugins.cmp') end,
+  })
+
+   -- Snippets
+  use {"L3MON4D3/LuaSnip", config = function() require('plugins.snippets') end}
+  use "rafamadriz/friendly-snippets"
 
  -- Telescope
   use({
