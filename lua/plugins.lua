@@ -49,7 +49,12 @@ require('packer').startup(function(use)
   }
   use 'neovim/nvim-lspconfig'
 
-
+ -- Telescope
+  use({
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }},
+    config = function() require('plugins.telescope') end,
+  })
 
   -- Bufferline
   use {
@@ -77,8 +82,7 @@ require('packer').startup(function(use)
 
    -- Treesitter
   use {
-    'nvim-treesitter/nvim-treesitter',
-    config = function() require('plugins.treesitter') end,
+    'nvim-treesitter/nvim-treesitter', config = function() require('plugins.treesitter') end,
     run = ':TSUpdate'
   }
   
@@ -88,6 +92,18 @@ require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
   }
+
+  -- Startup
+use {
+  'glepnir/dashboard-nvim',
+  event = 'VimEnter',
+  config = function()
+    require('dashboard').setup {
+      -- config
+    }
+  end,
+  requires = {'nvim-tree/nvim-web-devicons'}
+}
 
   -- Indent Line
   use {
@@ -102,7 +118,7 @@ require('packer').startup(function(use)
   }
 
   -- Formatting
-  use 'tpope/vim--surround'
+  use 'tpope/vim-surround'
 
   if packer_bootstrap then
     require('packer').sync()

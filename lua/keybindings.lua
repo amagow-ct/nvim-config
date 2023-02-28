@@ -29,6 +29,16 @@ nnoremap('gT', '<Cmd>bprevious<CR>')
 -- Buffer control
 nnoremap('<leader>bd', '<Cmd>bdelete<CR>')
 
+-- Telescope
+local builtin = require('telescope.builtin') 
+km.set('n', '<leader>ff', builtin.find_files)
+km.set('n', '<leader>fG', builtin.grep_string)
+km.set('n', '<leader>fg', builtin.live_grep)
+km.set('n', '<leader>fb', builtin.buffers)
+km.set('n', '<leader>fh', builtin.help_tags)
+km.set('n', '<leader>fc', builtin.git_commits)
+km.set('n', '<leader>fC', builtin.git_bcommits)
+
   -- Gitsigns
 km.set({'n', 'v'}, '<leader>hs', '<Cmd>Gitsigns stage_hunk<CR>')
 km.set({'n', 'v'}, '<leader>hr', '<Cmd>Gitsigns reset_hunk<CR>')
