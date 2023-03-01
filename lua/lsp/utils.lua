@@ -30,10 +30,12 @@ function M.common_on_attach(client, bufnr)
 
   bufnoremap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>')
 
-  bufnoremap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<cr>')
+  bufnoremap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
 
-  bufnoremap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<cr>')
-  bufnoremap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<cr>')
+  bufnoremap('n', '<leader>F', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>')
+
+  bufnoremap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>')
+  bufnoremap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>')
 
   if client.server_capabilities.document_formatting then
     cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
