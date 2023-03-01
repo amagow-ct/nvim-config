@@ -20,7 +20,7 @@ function M.common_on_attach(client, bufnr)
 
   bufnoremap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
   bufnoremap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-  bufnoremap('n', '<leader>D', '<Cmd>lua vim.lsp.buf.typede()<CR>')
+  bufnoremap('n', '<leader>D', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
 
   bufnoremap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
   bufnoremap('n', '<leader>gr', '<Cmd>Telescope lsp_references<CR>')  -- Uses Telescope
