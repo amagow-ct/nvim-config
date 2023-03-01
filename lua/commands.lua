@@ -11,3 +11,10 @@ api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
   group = treesitterFoldGroup,
   callback = foldCallback
 })
+
+local autoformatGroup = api.nvim_create_augroup("Autoformat", { clear = true })
+api.nvim_create_autocmd("BufWritePre", {
+  pattern = '*',
+  group = autoformatGroup,
+  command = 'lua vim.lsp.buf.format()',
+})
