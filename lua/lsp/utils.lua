@@ -18,12 +18,12 @@ function M.common_on_attach(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   end
 
-  bufnoremap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-  bufnoremap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+  bufnoremap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+  bufnoremap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
   bufnoremap('n', '<leader>D', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
 
-  bufnoremap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
-  bufnoremap('n', '<leader>gr', '<Cmd>Telescope lsp_references<CR>')  -- Uses Telescope
+  bufnoremap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+  bufnoremap('n', 'gr', '<Cmd>Telescope lsp_references<CR>')  -- Uses Telescope
 
   bufnoremap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
   bufnoremap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
@@ -32,7 +32,7 @@ function M.common_on_attach(client, bufnr)
 
   bufnoremap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
 
-  bufnoremap('n', '<leader>F', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>')
+  bufnoremap('n', '<leader>F', '<Cmd>lua vim.lsp.buf.format()<CR>')
 
   bufnoremap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>')
   bufnoremap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>')
