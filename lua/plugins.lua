@@ -5,9 +5,9 @@ local api = vim.api
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -26,7 +26,7 @@ api.nvim_create_autocmd("BufWritePost", {
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   print('Installing packer...')
   local packer_url = 'https://github.com/wbthomason/packer.nvim'
-  vim.fn.system({'git', 'clone', '--depth', '1', packer_url, install_path})
+  vim.fn.system({ 'git', 'clone', '--depth', '1', packer_url, install_path })
   print('Done.')
 
   vim.cmd('packadd packer.nvim')
@@ -36,7 +36,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
- 
+
   -- THEMES
   -- Theme inspired by Atom
   use 'joshdick/onedark.vim'
@@ -53,6 +53,10 @@ require('packer').startup(function(use)
     requires = { "ray-x/lsp_signature.nvim" },
   }
 
+  -- Snippets
+  use { "L3MON4D3/LuaSnip", config = function() require('plugins.snippets') end }
+  use "rafamadriz/friendly-snippets"
+
   -- Autocomplete
   use({
     "hrsh7th/nvim-cmp",
@@ -68,14 +72,10 @@ require('packer').startup(function(use)
     config = function() require('plugins.cmp') end,
   })
 
-   -- Snippets
-  use {"L3MON4D3/LuaSnip", config = function() require('plugins.snippets') end}
-  use "rafamadriz/friendly-snippets"
-
- -- Telescope
+  -- Telescope
   use({
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }},
+    requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } },
     config = function() require('plugins.telescope') end,
   })
 
@@ -101,15 +101,15 @@ require('packer').startup(function(use)
     },
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = function() require('plugins.nvimtree') end
-  } 
+  }
 
-   -- Treesitter
+  -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter', config = function() require('plugins.treesitter') end,
     run = ':TSUpdate'
   }
-  
-   -- Git
+
+  -- Git
   use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
@@ -117,12 +117,12 @@ require('packer').startup(function(use)
   }
 
   -- Startup
-use {
-  'glepnir/dashboard-nvim',
-  event = 'VimEnter',
-  config = function() require('plugins.dashboard') end,
-  requires = {'nvim-tree/nvim-web-devicons'}
-}
+  use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function() require('plugins.dashboard') end,
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
 
   -- Indent Line
   use {
@@ -131,14 +131,21 @@ use {
   }
 
   -- Comments
-  use { 
+  use {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup({}) end,
   }
 
   -- Formatting
   use 'tpope/vim-surround'
-
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {
+        disable_filetype = { "TelescopePrompt" }
+      }
+    end
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
