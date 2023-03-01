@@ -21,6 +21,8 @@ nnoremap('<leader>a', ':keepjumps normal! ggVG<cr>')
 
 -- File explorer
 nnoremap('<F2>', '<Cmd>NvimTreeToggle<CR>') 
+nnoremap('<F3>', '<Cmd>NvimTreeFocus<CR>') 
+nnoremap('<F4>', '<Cmd>NvimTreeFindFile<CR>') 
 
 -- Buffer navigation
 nnoremap('gt', '<Cmd>bnext<CR>')
