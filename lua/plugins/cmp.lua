@@ -1,6 +1,5 @@
 local fn = vim.fn
 
--- local Utils = require('utils')
 local luasnip = require('luasnip')
 local cmp = require('cmp')
 
@@ -10,22 +9,7 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local function get_snippets_rtp()
-  return vim.tbl_map(function(itm)
-    return fn.fnamemodify(itm, ":h")
-  end, vim.api.nvim_get_runtime_file(
-    "package.json", true
-  ))
-end
-
-local opts = {
-  paths = {
-    fn.stdpath('config') .. '/snips/',
-    get_snippets_rtp()[1],
-  },
-}
-
-require('luasnip.loaders.from_vscode').lazy_load(opts)
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
   preselect = cmp.PreselectMode.Item,
@@ -34,7 +18,7 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  -- Mappings
+  -- Mapping"s
   mapping = {
     -- open/close autocomplete
     ["<C-.>"] = cmp.mapping({
