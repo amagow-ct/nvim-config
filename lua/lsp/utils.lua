@@ -14,47 +14,26 @@ function M.common_on_attach(client, bufnr)
 
   -- Helper function
   local opts = {noremap = true, silent = true}
-  local function bufnnoremap(lhs, rhs)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', lhs, rhs, opts)
+  local function bufnoremap(mode, lhs, rhs)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   end
 
-  -- Keymaps: we need to define keymaps for each of the LSP functionalities manually
-  -- Go to definition and declaration (use leader to presever standard use of 'gd')
-  bufnnoremap("<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  bufnnoremap("<leader>gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
+  bufnoremap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+  bufnoremap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+  bufnoremap('n', '<leader>D', '<Cmd>lua vim.lsp.buf.typede()<CR>')
 
-  -- Go to implementation
-  bufnnoremap("<leader>gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>")
+  bufnoremap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+  bufnoremap('n', '<leader>gr', '<Cmd>Telescope lsp_references<CR>')  -- Uses Telescope
 
-  -- List symbol uses
-  -- bufnnoremap("<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")  -- Uses quickfix
-  bufnnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>")  -- Uses Telescope
+  bufnoremap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  bufnoremap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
 
-  -- Inspect function
-  bufnnoremap("K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+  bufnoremap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>')
 
-  -- Rename all references of symbol
-  bufnnoremap("<leader>R", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+  bufnoremap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<cr>')
 
-  -- Navigate diagnostics
-  bufnnoremap("<C-n>", "<Cmd>lua vim.diagnostic.goto_next()<CR>")
-  bufnnoremap("<C-p>", "<Cmd>lua vim.diagnostic.goto_prev()<CR>")
-
-   -- Selects a code action available at the current cursor position
-  bufnnoremap('<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-  vim.api.nvim_buf_set_keymap(bufnr, 'x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', {})
-
-  -- Show diagnostics in a floating window
-  bufnnoremap('gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-
-  -- Move to the previous diagnostic
-  bufnnoremap('[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-
-  -- Move to the next diagnostic
-  bufnnoremap(']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-
-  -- Markdown preview TODO: make this conditional, but I also don't use it all that much
-  -- bufnnnoremap("<leader>P", "<Cmd>Glow<CR>")
+  bufnoremap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<cr>')
+  bufnoremap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<cr>')
 
   if client.server_capabilities.document_formatting then
     cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
