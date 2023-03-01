@@ -4,6 +4,8 @@ local Utils = require('utils')
 local km = vim.keymap
 local nnoremap = Utils.nnoremap
 
+km.set('n', '<C-q>', '<Cmd>qa<CR>')
+
 -- Copy to clipboard
 km.set({'n', 'x'}, '<leader>y', '"+y')
 
