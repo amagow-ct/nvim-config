@@ -52,13 +52,13 @@ nnoremap('<leader>tb', '<Cmd>Gitsigns toggle_current_line_blame<CR>')
 nnoremap('<leader>hd', '<Cmd>Gitsigns diffthis<CR>')
 nnoremap('<leader>hD', '<Cmd>Gitsigns diffthis ~<CR>')
 nnoremap('<leader>td', '<Cmd>Gitsigns toggle_deleted<CR>')
-km.set('n', ']c', function() 
-  if vim.wo.diff then return ']c' end 
+km.set('n', ']c', function()
+  if vim.wo.diff then return ']c' end
   vim.schedule(function() vim.cmd('Gitsigns next_hunk') end)
   return '<Ignore>'
 end, {expr=true})
-km.set('n', '[c', function() 
-  if vim.wo.diff then return '[c' end 
+km.set('n', '[c', function()
+  if vim.wo.diff then return '[c' end
   vim.schedule(function() vim.cmd('Gitsigns prev_hunk') end)
   return '<Ignore>'
 end, {expr=true})
