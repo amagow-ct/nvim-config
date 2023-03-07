@@ -7,21 +7,21 @@ local nnoremap = Utils.nnoremap
 km.set('n', '<C-q>', '<Cmd>qa<CR>')
 
 -- Copy to clipboard
-km.set({'n', 'x'}, '<leader>y', '"+y')
+km.set({ 'n', 'x' }, '<leader>y', '"+y')
 
 -- Paste from clipboard
-km.set({'n', 'x'}, '<leader>p', '"+p')
+km.set({ 'n', 'x' }, '<leader>p', '"+p')
 
 -- Delete without changing register
-km.set({'n', 'x'}, 'x', '"_x')
+km.set({ 'n', 'x' }, 'x', '"_x')
 
 -- Select all text current buffer
 nnoremap('<leader>a', ':keepjumps normal! ggVG<cr>')
 
 -- File explorer
-nnoremap('<F2>', '<Cmd>NvimTreeToggle<CR>') 
-nnoremap('<F3>', '<Cmd>NvimTreeFocus<CR>') 
-nnoremap('<F4>', '<Cmd>NvimTreeFindFile<CR>') 
+nnoremap('<F2>', '<Cmd>NvimTreeToggle<CR>')
+nnoremap('<F3>', '<Cmd>NvimTreeFocus<CR>')
+nnoremap('<F4>', '<Cmd>NvimTreeFindFile<CR>')
 
 -- Buffer navigation
 nnoremap('gt', '<Cmd>bnext<CR>')
@@ -30,10 +30,10 @@ nnoremap('gT', '<Cmd>bprevious<CR>')
 -- Buffer control
 nnoremap('<leader>bdd', '<Cmd>bdelete<CR>')
 nnoremap('<leader>bda', '<Cmd>%bdelete<CR>')
-nnoremap('<leader>bdo', '<Cmd>%bdelete<CR>')
+nnoremap('<leader>bdo', '<Cmd>%bdelete|e#|bdelete#<CR>')
 
 -- Telescope
-local builtin = require('telescope.builtin') 
+local builtin = require('telescope.builtin')
 km.set('n', '<leader>ff', builtin.find_files)
 km.set('n', '<leader>fG', builtin.grep_string)
 km.set('n', '<leader>fg', builtin.live_grep)
@@ -42,9 +42,9 @@ km.set('n', '<leader>fh', builtin.help_tags)
 km.set('n', '<leader>fc', builtin.git_commits)
 km.set('n', '<leader>fC', builtin.git_bcommits)
 
-  -- Gitsigns
-km.set({'n', 'v'}, '<leader>hs', '<Cmd>Gitsigns stage_hunk<CR>')
-km.set({'n', 'v'}, '<leader>hr', '<Cmd>Gitsigns reset_hunk<CR>')
+-- Gitsigns
+km.set({ 'n', 'v' }, '<leader>hs', '<Cmd>Gitsigns stage_hunk<CR>')
+km.set({ 'n', 'v' }, '<leader>hr', '<Cmd>Gitsigns reset_hunk<CR>')
 nnoremap('<leader>hS', '<Cmd>Gitsigns stage_buffer<CR>')
 nnoremap('<leader>hy', '<Cmd>Gitsigns undo_stage_hunk<CR>')
 nnoremap('<leader>hR', '<Cmd>Gitsigns reset_buffer<CR>')
@@ -58,12 +58,12 @@ km.set('n', ']c', function()
   if vim.wo.diff then return ']c' end
   vim.schedule(function() vim.cmd('Gitsigns next_hunk') end)
   return '<Ignore>'
-end, {expr=true})
+end, { expr = true })
 km.set('n', '[c', function()
   if vim.wo.diff then return '[c' end
   vim.schedule(function() vim.cmd('Gitsigns prev_hunk') end)
   return '<Ignore>'
-end, {expr=true})
+end, { expr = true })
 
 -- vim fugitive
 nnoremap('<leader>gg', '<Cmd>Git<CR>')
