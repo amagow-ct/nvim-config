@@ -28,7 +28,9 @@ nnoremap('gt', '<Cmd>bnext<CR>')
 nnoremap('gT', '<Cmd>bprevious<CR>')
 
 -- Buffer control
-nnoremap('<leader>bd', '<Cmd>bdelete<CR>')
+nnoremap('<leader>bdd', '<Cmd>bdelete<CR>')
+nnoremap('<leader>bda', '<Cmd>%bdelete<CR>')
+nnoremap('<leader>bdo', '<Cmd>%bdelete<CR>')
 
 -- Telescope
 local builtin = require('telescope.builtin') 
